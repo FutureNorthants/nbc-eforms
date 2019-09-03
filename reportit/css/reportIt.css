@@ -144,3 +144,6 @@ form fieldset.receipt-options input{
 form fieldset label.full {
 	width: 100%;
 }
+.exact{
+	display:none;
+}
