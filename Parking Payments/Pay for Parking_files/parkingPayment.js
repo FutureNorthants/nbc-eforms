@@ -145,7 +145,7 @@
 
 //	------------------------------------------------------------
 	var submitDetails = function () {
-		var url = "../CreateParkingPayment";
+		var url = "mycouncil-stage.northampton.digital/CreateParkingPayment";
 		$.ajaxSetup({
 			beforeSend:function(){
 				$ajaxLoading.show();
