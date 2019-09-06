@@ -57,6 +57,7 @@
 	var $existingPassFields = $(".js-existingPass");
 	var $cboPaymentType = $("#paymentType");
 	var $txtPaymentPeriod = $("#paymentPeriod");
+	var $txtPayPeriodDetails = $("#paymentPeriod")
 	var $cardPaymentFields = $(".js-card");
 	var $ddPaymentFields = $(".js-dd");
 	var $noTeam = $("#validTeam");
