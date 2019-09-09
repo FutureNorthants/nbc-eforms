@@ -304,7 +304,7 @@
 		model.addressTown = $town.val();
 		model.addressCounty = $county.val();
 		model.addressPostCode = $postcode.val();
-		model.txtPayPeriodDetails = $txtPayPeriodDetails.options[$txtPayPeriodDetails.selectedIndex].text;
+		model.txtPayPeriodDetails = $("option:selected", $txtPayPeriodDetails).text()
 		model.txtAddress = model.addressNumber + " " + model.addressStreet + " " + model.addressTown + " " + model.addressCounty + " " + model.addressPostCode;
 		model.txtInternal = internal;
 		
