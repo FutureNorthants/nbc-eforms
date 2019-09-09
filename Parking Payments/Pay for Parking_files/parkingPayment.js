@@ -57,7 +57,7 @@
 	var $existingPassFields = $(".js-existingPass");
 	var $cboPaymentType = $("#paymentType");
 	var $txtPaymentPeriod = $("#paymentPeriod");
-	var $txtPayPeriodDetails = $("#paymentPeriod");
+	var $txtPayPeriodDescription = $("#paymentPeriod");
 	var $cardPaymentFields = $(".js-card");
 	var $ddPaymentFields = $(".js-dd");
 	var $noTeam = $("#validTeam");
@@ -80,7 +80,7 @@
 			cboPayment: "",
 			txtTelNo: "",
 			txtPayPeriod: "",
-			txtPayPeriodDetails: "", 
+			txtPayPeriodDescription: "", 
 			txtComments: "",
 			addressNumber: "",
 			addressStreet: "",
@@ -298,7 +298,7 @@
 		model.cboPayment = $cboPaymentType.val();
 		model.txtTelNo = $txtCustTel.val();
 		model.txtPayPeriod = $txtPaymentPeriod.val();
-		model.txtPayPeriodDetails = $("option:selected", $txtPayPeriodDetails).text();
+		model.txtPayPeriodDescription = $("option:selected", $txtPayPeriodDescription).text();
 		model.txtComments = "";
 		model.addressNumber = $addressNumber.val();
 		model.addressStreet = $streetName.val();
