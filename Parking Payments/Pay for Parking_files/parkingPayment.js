@@ -57,7 +57,7 @@
 	var $existingPassFields = $(".js-existingPass");
 	var $cboPaymentType = $("#paymentType");
 	var $txtPaymentPeriod = $("#paymentPeriod");
-	var $txtPayPeriodDetails = $txtPaymentPeriod.options[$txtPaymentPeriod.selectedIndex].text;
+	var $txtPayPeriodDetails = $("#paymentPeriod");
 	var $cardPaymentFields = $(".js-card");
 	var $ddPaymentFields = $(".js-dd");
 	var $noTeam = $("#validTeam");
@@ -304,7 +304,7 @@
 		model.addressTown = $town.val();
 		model.addressCounty = $county.val();
 		model.addressPostCode = $postcode.val();
-		model.txtPayPeriodDetails =$txtPayPeriodDetails;
+		model.txtPayPeriodDetails =model.txtPayPeriod.options[txtPayPeriod.selectedIndex].text;
 		model.txtAddress = model.addressNumber + " " + model.addressStreet + " " + model.addressTown + " " + model.addressCounty + " " + model.addressPostCode;
 		model.txtInternal = internal;
 		
