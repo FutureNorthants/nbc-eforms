@@ -298,7 +298,7 @@
 		model.cboPayment = $cboPaymentType.val();
 		model.txtTelNo = $txtCustTel.val();
 		model.txtPayPeriod = $txtPaymentPeriod.val();
-		model.txtPayPeriodDescription = $("option:selected", $txtPayPeriodDescription).text();
+		model.txtPayPeriodDescription = $("option:selected", $txtPayPeriodDescription).text().replace("£", "");
 		model.txtComments = "";
 		model.addressNumber = $addressNumber.val();
 		model.addressStreet = $streetName.val();
