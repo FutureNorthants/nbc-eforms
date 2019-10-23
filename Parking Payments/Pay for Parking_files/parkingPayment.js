@@ -150,7 +150,7 @@
 		var testwindow = window.location.href;
 		if (testwindow.includes("test")){
 		var url = "https://mycouncil-test.northampton.digital/CreateParkingPayment";
-		} else {url ="https://mycouncil1.northampton.digital/CreateParkingPayment"};
+		} else {url ="https://mycouncil.northampton.digital/CreateParkingPayment"};
 		console.log(url);
 		$.ajaxSetup({
 			beforeSend:function(){
