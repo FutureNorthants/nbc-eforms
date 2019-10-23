@@ -4,7 +4,7 @@
 <title>Northampton Borough Council : Report a Problem</title>
 <link rel="stylesheet" type="text/css" href="css/base.css">
 <link rel="stylesheet" type="text/css" href="css/reportIt.css">
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGH-C0Ba_9QGp_YF32gs0FQmhB2tdcrpQ"></script>
+<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyDGH-C0Ba_9QGp_YF32gs0FQmhB2tdcrpQ"></script>
 <link rel="Shortcut Icon" type="image/x-icon" href="images/favicon.ico">
 <link rel="apple-touch-icon" href="/site/apple-touch-icon.png">
 <link rel="ToC" href="http://www.northampton.gov.uk/site_map">
@@ -152,7 +152,6 @@
 								<option value="false">Select</option>
 								<option value="Litter">Litter</option>
 								<option value="Flytip">Flytipping</option>
-								<option value="street_clean">Street cleaning</option>
 								<option value="street_sign_clean">Street sign cleaning</option>
 								<option value="dead_animal">Dead Animal</option>
 								<option value="dog_fouling">Dog Fouling</option>
@@ -169,8 +168,8 @@
 								<option value="sweeping_required">Sweeping Required</option>
 								<option value="broken_glass">Broken Glass</option>
 								<option value="bodily_fluids">Bodily Fluids</option>
-								 <option value="broken_street_lighting">Broken Street Lighting</option>
-								<!--<option value="abandoned_trolley">Abandoned Trolley</option>-->
+							    <option value="broken_street_lighting">Broken Street Lighting</option>
+								<!-- <option value="abandoned_trolley">Abandoned Trolley</option>-->
 							</select>
 							<p class="form-help error js-type-error">Please select the type of problem you're reporting</p>
 						</fieldset>
@@ -218,9 +217,9 @@
 								within Northampton Borough</p>
 								<p class="form-help error js-map-error">Please select a more specific location by dragging pin on the map</p>
 						</fieldset>
-						<fieldset class ="exact">
+						<fieldset class = "hidden">
 						<label for="problemLocation">Exact Location</label>
-						<input type="text" id="problemLocation" class="form-text" /> <!--holds the result of the google geocoder -->
+						<input type="text" id="problemLocation" class="form-text" />  <!--holds the result of the google geocoder--> 
 						</fieldset>
 						<fieldset>
 							<label for="rdoAlley">Is this an alleyway or service road?</label>
@@ -284,7 +283,6 @@
 								<option value="yes">Yes</option>
 							</select>
 						</fieldset>
-					<fieldset>
 					<div class = "postref">
 					<fieldset>
 							<label for="postref">Street light ID</label> <input
@@ -1045,7 +1043,14 @@
 					</form> -->
 				</div>
 				<script
-					src="js/jquery.min.js"></script>
+					src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+				<script>
+					window.jQuery
+							|| document
+									.write('<script src="js/jquery.min.1.8.js"><\/script>')
+				</script>
+
+				
 				<script src="js/reportIt.js"></script>
 				
 				<!-- ################ MAIN CONTENT END ############ -->
