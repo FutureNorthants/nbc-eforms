@@ -148,7 +148,7 @@
 //	------------------------------------------------------------
 	var submitDetails = function () {
 		var testwindow = window.location.href;
-		if (testwindow.includes(test)){
+		if (testwindow.includes("test")){
 		var url = "https://mycouncil-test.northampton.digital/CreateParkingPayment";
 		} else {url ="https://mycouncil1.northampton.digital/CreateParkingPayment"};
 		console.log(url);
