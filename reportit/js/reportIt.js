@@ -468,7 +468,7 @@ window.nbcApp = {
 		
 		//make the ajax call
 		$.ajax({
-			url:"CreateCall",
+			url:"https://mycouncil-test.northampton.digital/CreateCall",
 			type:"POST",
 			dataType:"JSON",
 			data: self.model,
