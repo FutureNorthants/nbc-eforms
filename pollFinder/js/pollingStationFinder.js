@@ -279,10 +279,10 @@ nbcApp.Utils.getParameterByName = function(name) {
  * Returns {JSON Object} a list of properties
  */
 nbcApp.Utils.getPropertyList = function(pc){
-	var url = "https://api.northampton.digital/vcc/getpropertiesbypostcode?postCode="+pc;
+	var url = "https://api.northampton.digital/vcc/getpropertiesbypostcode?postcode="+pc;
 	return $.ajax({
 		url: url,
-		dataType:"JSONP"
+		dataType:"JSON"
 	});
 };
 
