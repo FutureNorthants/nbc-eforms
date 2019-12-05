@@ -41,13 +41,14 @@ window.nbcApp = {
 						self.step3.hide();
 						nbcApp.Utils.searchForProperties(self.model.txtPostCode, self.populateProperties, self);
 					} else {
-						console.log("Error dont like the pc")
+						console.log("Error dont like the pc");
 						self.step1.show();
 						self.step2.hide();
 						self.step3.hide();
 						$(".js-postcode-invalid").show();
 					}
 				} else {
+						console.log("Really dont like pc");
 					$(".js-postcode-invalid").show();
 				}
 
