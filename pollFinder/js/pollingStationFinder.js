@@ -35,6 +35,7 @@ window.nbcApp = {
 				if(!nbcApp.Validation.isEmpty(self.model.txtPostCode)){
 					self.hideErrors();
 					if(validPc){
+					console.log("I love this pc")
 						$("#ajax-wait").show();
 						self.step1.hide();
 						self.step2.hide();
