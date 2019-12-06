@@ -81,7 +81,7 @@ window.nbcApp = {
 			self.step3.hide();
 			
 			$.ajax({
-				url: "PollStationFinder",
+				url: "https://mycouncil-test.northampton.digital/PollStationFinder",
 				data: self.model,
 				type: "GET",
 				success:function(data) {
