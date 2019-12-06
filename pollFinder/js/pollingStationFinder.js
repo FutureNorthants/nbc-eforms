@@ -296,7 +296,7 @@ nbcApp.Utils.getPropertyList = function(pc){
 nbcApp.Utils.getOptionListFromProperties = function(propArr){
 	var html = '<option value="false">Select</option>';
 	for(var x = 0; x < propArr.length; x++) {
-		html += '<option value="'+propArr[x].uprn+'">'+propArr[x].addressNumber+' '+propArr[x].streetName+'</option>';
+		html += '<option value="'+propArr[x].uprn+'">'+propArr[x][3]+' '+propArr[x].streetName+'</option>';
 	}
 	return html;
 };
