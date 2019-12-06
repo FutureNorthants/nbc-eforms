@@ -167,7 +167,7 @@ window.nbcApp = {
 		populateProperties: function(data) {
 			$("#ajax-wait").hide();
 
-			if(data.success === "true" && data.results.length > 0){
+			if(/*data.success === "true" &&*/ data.results.length > 0){
 				this.properties = data.results;
 				var options = nbcApp.Utils.getOptionListFromProperties(data.results);
 				$("#uprn").html(options);
