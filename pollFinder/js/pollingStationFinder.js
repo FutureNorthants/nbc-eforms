@@ -88,7 +88,7 @@ window.nbcApp = {
 					$("#ajax-wait").hide();
 
 					
-					if(data.success === "true") {
+					if(data.results< 0) {
 						self.populateResult(data);
 						self.step1.hide();
 						self.step2.hide();
