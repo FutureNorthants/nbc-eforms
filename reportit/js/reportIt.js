@@ -308,8 +308,8 @@ window.nbcApp = {
 				  }
 				if(data.results.length > 0 ) {
 					 
-				 ourLat = data.results[0][2];
-				 ourLong = data.results[0][3];
+				 ourLat = data.results[addressSel][2];
+				 ourLong = data.results[addressSel][3];
 				 ourLatLong =  new google.maps.LatLng(ourLat, ourLong);
 				
 				console.log(ourLatLong);
