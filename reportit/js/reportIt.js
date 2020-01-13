@@ -299,8 +299,17 @@ window.nbcApp = {
 			{
 				
 				if(data.results.length > 0 ) {
-				 ourLat = data.results[0][2];
-				 ourLong = data.results[0][3];
+
+					var index = -1;
+var val = searchStr;
+var filteredObj = data.find(function(item, i){
+  if(item.name === val){
+    index = i;
+    return i;
+  }
+});
+				 ourLat = data.results[i][2];
+				 ourLong = data.results[i][3];
 				 ourLatLong =  new google.maps.LatLng(ourLat, ourLong);
 				
 				console.log(ourLatLong);
