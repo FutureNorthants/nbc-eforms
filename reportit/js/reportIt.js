@@ -300,7 +300,7 @@ window.nbcApp = {
 				var addressSel =""
 				if(data.results.length > 0 ) {
 					for(var i = 0; i < data.results.length; i++) {
-						if ([i]== searchStr) {
+						if (data.results[i]== searchStr) {
 						 addressSel= results[i];
 						  break;
 						}
