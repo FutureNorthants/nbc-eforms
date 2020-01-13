@@ -301,8 +301,9 @@ window.nbcApp = {
 				for(var i = 0; i < data.results.length; i++) {
 					if (data.results[i][1]== searchStr) {
 					 addressSel= data.results[i][1];
+					 console.log(addressSel);
 					  break;
-					  console.log(addressSel);
+					  
 					}
 				  }
 				if(data.results.length > 0 ) {
