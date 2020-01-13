@@ -297,10 +297,16 @@ window.nbcApp = {
 			data:{streetName: searchStr},
 			success: function(data)
 			{
-				
+				var addressSel =""
 				if(data.results.length > 0 ) {
-				 ourLat = data.results[0][2];
-				 ourLong = data.results[0][3];
+					for(var i = 0; i < data.results.length; i++) {
+						if ([i]== searchStr) {
+						 addressSel= users[i];
+						  break;
+						}
+					  } 
+				 ourLat = data.results[addressSel][2];
+				 ourLong = data.results[addressSel][3];
 				 ourLatLong =  new google.maps.LatLng(ourLat, ourLong);
 				
 				console.log(ourLatLong);
