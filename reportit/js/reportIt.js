@@ -297,29 +297,20 @@ window.nbcApp = {
 			data:{streetName: searchStr},
 			success: function(data)
 			{
-				var addressSel 
-				for(var i = 0; i < data.results.length; i++) {
-					if (data.results[i][1]== searchStr) {
-					 addressSel= data.results[i][1];
-					 console.log(addressSel);
-					  break;
-					  
-					}
-				  
+				
 				if(data.results.length > 0 ) {
-					 
-				 ourLat = data.results[addressSel][2];
-				 ourLong = data.results[addressSel][3];
+				 ourLat = data.results[0][2];
+				 ourLong = data.results[0][3];
 				 ourLatLong =  new google.maps.LatLng(ourLat, ourLong);
 				
 				console.log(ourLatLong);
-				searchStr = searchStr + ", Northampton, UK";
+				searchStr = searchStr + "Northampton, UK";
 				address = searchStr;
 				console.log(searchStr);}
 				if (ourLatLong !=null){
 					self.setCurrentLocation(ourLatLong,address);
 					self.updateMarker(ourLatLong);
-				}}
+				}
 				/*self.geocoder.geocode( { 'location': ourLatLong, 'bounds':self.mapBounds}, function(results, status) {
 					if (status == google.maps.GeocoderStatus.OK && results[0]) {
 						// move map marker, populate lat/lng
