@@ -305,7 +305,7 @@ window.nbcApp = {
 					  break;
 					  
 					}
-				  }
+				  
 				if(data.results.length > 0 ) {
 					 
 				 ourLat = data.results[addressSel][2];
@@ -319,7 +319,7 @@ window.nbcApp = {
 				if (ourLatLong !=null){
 					self.setCurrentLocation(ourLatLong,address);
 					self.updateMarker(ourLatLong);
-				}
+				}}
 				/*self.geocoder.geocode( { 'location': ourLatLong, 'bounds':self.mapBounds}, function(results, status) {
 					if (status == google.maps.GeocoderStatus.OK && results[0]) {
 						// move map marker, populate lat/lng
