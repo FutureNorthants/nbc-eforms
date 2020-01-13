@@ -303,6 +303,7 @@ window.nbcApp = {
 						if (data.results[i]== searchStr) {
 						 addressSel= results[i];
 						  break;
+						  console.log(addressSel);
 						}
 					  } 
 				 ourLat = data.results[addressSel][2];
