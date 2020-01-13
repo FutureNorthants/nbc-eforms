@@ -304,7 +304,7 @@ window.nbcApp = {
 				 ourLatLong =  new google.maps.LatLng(ourLat, ourLong);
 				
 				console.log(ourLatLong);
-				searchStr = searchStr + " Northampton, UK";
+				searchStr = searchStr + ", Northampton, UK";
 				address = searchStr;
 				console.log(searchStr);}
 				if (ourLatLong !=null){
