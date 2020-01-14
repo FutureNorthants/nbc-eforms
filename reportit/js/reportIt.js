@@ -303,6 +303,7 @@ window.nbcApp = {
 					var myJSON = data.results;
 					var index =myJSON.indexOf("Alexandra Road");
 					console.log(myJSON);
+					consile.log(index);
 				 ourLat = data.results[0][2];
 				 ourLong = data.results[0][3];
 				 ourLatLong =  new google.maps.LatLng(ourLat, ourLong);
