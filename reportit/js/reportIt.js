@@ -306,7 +306,7 @@ window.nbcApp = {
 					console.log(index);
 
 					for (var i = 0; i <index; i++) {
-						console.log(myJSON[i]);
+						console.log(myJSON[i][1]);
 						//Do something
 					}
 				 ourLat = data.results[0][2];
