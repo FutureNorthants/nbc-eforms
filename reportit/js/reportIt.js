@@ -312,7 +312,7 @@ window.nbcApp = {
 						mySelect = myJSON[i].index
 						console.log(mySelect);
 
-					}	
+					}	else {console.log("What are you doing?")}
 					}
 				 ourLat = data.results[0][2];
 				 ourLong = data.results[0][3];
