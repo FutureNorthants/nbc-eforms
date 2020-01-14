@@ -301,7 +301,7 @@ window.nbcApp = {
 				if(data.results.length > 0 ) 
 				{
 					var index = data.results.indexOf(searchStr);
-					console.log(index);
+					console.log(searchStr,index);
 				 ourLat = data.results[0][2];
 				 ourLong = data.results[0][3];
 				 ourLatLong =  new google.maps.LatLng(ourLat, ourLong);
