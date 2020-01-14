@@ -310,6 +310,7 @@ window.nbcApp = {
 						//Do something
 					if (myJSON[i][1] === searchStr){
 						mySelect = myJSON[i].index
+						console.log(mySelect);
 
 					}	
 					}
