@@ -311,7 +311,7 @@ window.nbcApp = {
 						var j = i
 						
 
-					}	else {console.log("What are you doing?")}
+					}	else {console.log("does not match")}
 					}
 				 ourLat = data.results[j][2];
 				 ourLong = data.results[j][3];
