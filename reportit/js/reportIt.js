@@ -308,6 +308,10 @@ window.nbcApp = {
 					for (var i = 0; i <index; i++) {
 						console.log(myJSON[i][1]);
 						//Do something
+					if (myJSON[i][1] === searchStr){
+						mySelect = myJSON[i].index
+
+					}	
 					}
 				 ourLat = data.results[0][2];
 				 ourLong = data.results[0][3];
