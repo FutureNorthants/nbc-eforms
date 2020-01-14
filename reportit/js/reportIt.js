@@ -301,8 +301,7 @@ window.nbcApp = {
 				if(data.results.length > 0 ) 
 				{
 					var myJSON = data;
-					var index = myJSON.indexOf("Newport Pagnell Road West");
-					console.log(searchStr,index);
+					console.log(myJSON);
 				 ourLat = data.results[0][2];
 				 ourLong = data.results[0][3];
 				 ourLatLong =  new google.maps.LatLng(ourLat, ourLong);
