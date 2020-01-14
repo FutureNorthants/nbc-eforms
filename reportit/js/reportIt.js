@@ -300,7 +300,7 @@ window.nbcApp = {
 				
 				if(data.results.length > 0 ) 
 				{
-					var myJSON = data;
+					var myJSON = data.results;
 					console.log(myJSON);
 				 ourLat = data.results[0][2];
 				 ourLong = data.results[0][3];
