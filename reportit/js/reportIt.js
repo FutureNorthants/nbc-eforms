@@ -298,15 +298,29 @@ window.nbcApp = {
 			success: function(data)
 			{
 				
-				if(data.results.length > 0 ) {
-				 ourLat = data.results[0][2];
-				 ourLong = data.results[0][3];
+				if(data.results.length > 0 ) 
+				{
+					var myJSON = data.results;
+					var index =myJSON.length
+				
+
+					for (var i = 0; i <index; i++) {
+						
+						//Do something
+					if (myJSON[i][1] === searchStr){
+						var j = i
+						
+
+					}	else {console.log("does not match")}
+					}
+				 ourLat = data.results[j][2];
+				 ourLong = data.results[j][3];
 				 ourLatLong =  new google.maps.LatLng(ourLat, ourLong);
 				
-				console.log(ourLatLong);
+				
 				searchStr = searchStr + "Northampton, UK";
 				address = searchStr;
-				console.log(searchStr);}
+				;}
 				if (ourLatLong !=null){
 					self.setCurrentLocation(ourLatLong,address);
 					self.updateMarker(ourLatLong);
