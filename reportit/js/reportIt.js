@@ -301,7 +301,7 @@ window.nbcApp = {
 				if(data.results.length > 0 ) 
 				{
 					var myJSON = data.results;
-					var index =myJSON.indexOf("Alexandra Road");
+					var index =myJSON.length
 					console.log(myJSON);
 					console.log(index);
 				 ourLat = data.results[0][2];
