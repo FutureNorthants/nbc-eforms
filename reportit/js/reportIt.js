@@ -302,15 +302,14 @@ window.nbcApp = {
 				{
 					var myJSON = data.results;
 					var index =myJSON.length
-					console.log(myJSON);
-					console.log(index);
+				
 
 					for (var i = 0; i <index; i++) {
-						console.log(myJSON[i][1]);
+						
 						//Do something
 					if (myJSON[i][1] === searchStr){
 						var j = i
-						console.log(j);
+						
 
 					}	else {console.log("What are you doing?")}
 					}
@@ -318,10 +317,10 @@ window.nbcApp = {
 				 ourLong = data.results[j][3];
 				 ourLatLong =  new google.maps.LatLng(ourLat, ourLong);
 				
-				console.log(ourLatLong);
+				
 				searchStr = searchStr + "Northampton, UK";
 				address = searchStr;
-				console.log(searchStr);}
+				;}
 				if (ourLatLong !=null){
 					self.setCurrentLocation(ourLatLong,address);
 					self.updateMarker(ourLatLong);
