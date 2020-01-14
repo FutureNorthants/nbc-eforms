@@ -304,6 +304,11 @@ window.nbcApp = {
 					var index =myJSON.length
 					console.log(myJSON);
 					console.log(index);
+
+					for (var i = 0; i <index; i++) {
+						console.log(myJSON[i]);
+						//Do something
+					}
 				 ourLat = data.results[0][2];
 				 ourLong = data.results[0][3];
 				 ourLatLong =  new google.maps.LatLng(ourLat, ourLong);
