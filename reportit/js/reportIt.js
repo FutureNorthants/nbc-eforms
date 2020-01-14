@@ -314,8 +314,8 @@ window.nbcApp = {
 
 					}	else {console.log("What are you doing?")}
 					}
-				 ourLat = data.results[0][2];
-				 ourLong = data.results[0][3];
+				 ourLat = data.results[j][2];
+				 ourLong = data.results[j][3];
 				 ourLatLong =  new google.maps.LatLng(ourLat, ourLong);
 				
 				console.log(ourLatLong);
