@@ -300,7 +300,7 @@ window.nbcApp = {
 				
 				if(data.results.length > 0 ) 
 				{
-					var index = data.results.indexOf(searchStr);
+					var index = data.results.indexOf("Alexandra Road");
 					console.log(searchStr,index);
 				 ourLat = data.results[0][2];
 				 ourLong = data.results[0][3];
