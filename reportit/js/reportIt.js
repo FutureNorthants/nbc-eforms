@@ -235,6 +235,14 @@ window.nbcApp = {
 										 { "visibility": "off" }
 										 ]
 						 }
+
+						 {
+							"featureType": "all",
+							"elementType": "labels",
+							"stylers": [
+										{ "visibility": "off" }
+										]
+						}
 						 ]
 		};
 
