@@ -238,7 +238,7 @@ window.nbcApp = {
 
 						 {
 							"featureType": "all",
-							"elementType": "labels",
+							"elementType": "labels.icon",
 							"stylers": [
 										{ "visibility": "off" }
 										]
