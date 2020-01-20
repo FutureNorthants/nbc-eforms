@@ -234,7 +234,7 @@ window.nbcApp = {
 							 "stylers": [
 										 { "visibility": "off" }
 										 ]
-						 }
+						 },
 
 						 {
 							"featureType": "all",
