@@ -169,14 +169,16 @@
 								<option value="broken_glass">Broken Glass</option>
 								<option value="bodily_fluids">Bodily Fluids</option>
 							    <option value="broken_street_lighting">Broken Street Lighting</option>
+							    <option value ="tree">Trees</option>
 								<!-- <option value="abandoned_trolley">Abandoned Trolley</option>-->
 							</select>
 							<p class="form-help error js-type-error">Please select the type of problem you're reporting</p>
+									
 						</fieldset>
 						</div>
 						<fieldset id="something-else">
 						
-<p>As your problem is not on the list, please report it using <a target="_blank" href="http://www.northampton.gov.uk/contactthecouncil">this contact form</a> so that we can make sure the right person deals with your report.</p>
+<p>As your problem is to do with trees, please view <a target="_blank" href="https://www.northampton.gov.uk/trees">this dedicated page</a> so that we can make sure the right person deals with your report.</p>
 						
 						</fieldset>
 						<div class="js-step-2">
@@ -251,6 +253,7 @@
 							<label for="emailAddress">Email</label> <input type="text" id="emailAddress"
 								class="form-text mandatory" placeholder="Enter your email address"/>
 								<p class="form-help error js-email">Please enter your email address</p>
+								<p class ="form-help">If you have a MyAccount, provide your email and we can keep you updated on your report</p>
 						</fieldset>
 						<fieldset class="js-witness">
 							<label for="witness">Did you witness the flytip take place?</label>
@@ -286,13 +289,18 @@
 					<div class = "postref">
 					<fieldset>
 							<label for="postref">Street light ID</label> <input
-								type="text" id="postref" class="form-text" />
+								type="number" id="postref" class="form-text" pattern="/^[0-9]*$/ " min="10000" max="20000" onKeyPress="if(this.value.length==5) return false;"onkeydown="return event.keyCode !== 69" placeholder="5 digit number e.g 10001" /><img src="images/success-mini.jpg" id ="valLamp" class="form-help error js-type-error">
+								
+								<!-- <p class="form-help error js-type-error" id ="invLamp">We do not recognise this street light please check again</p> -->
+								<p class="form-help error js-type-error" id ="valLamp">This is an NBC owned street light</p>
 					</fieldset>
+					
+					<p class="form-help error js-type-error" id ="invLamp">We do not recognise this street light please check again or try reporting via <a href ="https://northamptonshire-self.achieveservice.com/service/Report_a_fault_with_a_streetlight">Northamptonshire County Councils Street Lighting Report Form</a></p>
 				</div>
 					<div class = "binref">
 					<fieldset>
 							<label for="binref">Bin Reference Number</label> <input
-								type="text" id="binref" class="form-text" />
+								type="text" id="binref" class="form-text" maxlength="5" />
 							</fieldset>
 							</div>
 						<div class="js-perp__details">

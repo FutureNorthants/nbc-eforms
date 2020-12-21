@@ -135,7 +135,7 @@ window.nbcApp = {
 		//show and hide the form based on if 'Something else' option is selected
 		$('#problemNumber').on('change', function(){
 			$this_select = $(this);
-			if($this_select.val() == 'something-else'){
+			if($this_select.val() == 'tree'){
 				$('#something-else').show();
 				$(".js-step-2").hide();
 				$(".js-step-3").hide();
@@ -171,9 +171,9 @@ window.nbcApp = {
 			},
 			
 			success: function(data){
-				var streetN = data.results[0][1];
+				
 				if(data.results.length > 0 ){
-					
+					var streetN = data.results[0][1];
 					$(".js-street-search-ajax").hide();
 					self.showPropertyList(data.results);
 				} else {
@@ -197,7 +197,7 @@ window.nbcApp = {
 		 * 
 		 * show the list
 		 */
-		var html = '<option value="false">Select</option>';
+		var html = '<option value="">Select</option>';
 		var i;
 		var len = results.length;
 		for(i = 0; i < len; i++) {
@@ -205,7 +205,7 @@ window.nbcApp = {
 			var address = "";
 				address += results[i][1];
 				
-			html += '<option value="'+results[0][0]+'">'+address+'</option>';
+			html += '<option value="'+results[i][0]+'">'+address+'</option>';
 		}
 		
 		$("#objectId").html(html);
@@ -234,7 +234,15 @@ window.nbcApp = {
 							 "stylers": [
 										 { "visibility": "off" }
 										 ]
-						 }
+						 },
+
+						 {
+							"featureType": "all",
+							"elementType": "labels.icon",
+							"stylers": [
+										{ "visibility": "off" }
+										]
+						}
 						 ]
 		};
 
@@ -284,6 +292,8 @@ window.nbcApp = {
 
 		});
 	},
+	
+	
 	
 	searchGoogleForStreet: function(searchStr) {
 		var self = this;
@@ -463,9 +473,15 @@ window.nbcApp = {
 		
 	},
 	
+	hideSuccess: function(){
+		$("#valLamp").hide();
+		},
+	
 	hideErrors: function() {
 		$(".error").hide();
 	},
+	
+	
 
 	hideFields: function() {
 		$(".js-perp__details").hide();
@@ -746,6 +762,46 @@ nbcApp.Validation = {
 		return false;
 	}
 };
+
+
+$("#postref").keyup( function() {
+	var lampid = document.getElementById("postref").value;
+	
+	console.log(lampid)
+	$.ajax({
+			url:"https://api.northampton.digital/vcc/getstreetlamp",
+			type:"GET",
+			dataType:"JSON",
+			data:{lightNumber: lampid},
+		success: function(data){
+			var lamplen =lampid.length;
+				if(data.ScannedCount <= 0 && lamplen ==5 ){
+					$("#valLamp").hide();
+					$("#invLamp").show();
+					$("#Submit").hide();
+					
+				} else if(data.ScannedCount>=0 && lamplen == 5) {
+					
+					$("#invLamp").hide();
+					$("#valLamp").show();
+					$("#Submit").show();
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown){
+				console.log(textStatus);
+				// show error for no results
+				$("#invLamp").show();
+				$(".js-street-search-ajax").hide();
+			}		
+		
+	
+	});
+
+	
+});
+
+
+
 
 nbcApp.init();
 
