@@ -1,0 +1,101 @@
+/*Confirmation Page*/
+#divConfirmation {
+	text-align: center;
+}
+
+#receipt {
+	text-align: left;
+}
+
+.receipt {
+	*zoom: 1;
+	-webkit-transition: all .3s linear;
+	-moz-transition: all .3s linear;
+	-o-transition: all .3s linear;
+	transition: all .3s linear;
+}
+
+.receipt:after,.receipt:before {
+	content: '';
+	display: table;
+}
+
+.receipt:after {
+	clear: both;
+}
+
+.or {
+	float: left;
+	width: 10%;
+	text-align: center !important;
+	padding-top: 3em;
+	font-style: italic;
+}
+
+#content .receipt-result-text {
+	text-align: center;
+}
+
+.email-receipt,.sms-receipt {
+	position: relative;
+}
+
+.receipt-help {
+	color: #AA1E48;
+	font-size: .85em;
+	margin-left: 26%;
+	margin-top: 8px;
+	-webkit-transition: all .3s linear;
+	-moz-transition: all .3s linear;
+	-o-transition: all .3s linear;
+	transition: all .3s linear;
+}
+
+.receipt-sending {
+	text-align: left;
+	font-style: italic;
+}
+
+.receipt-sending span {
+	display: block;
+}
+
+.app-reference {
+	color: #AA1E48;
+	border-bottom: 1px solid #AA1E48;
+	font-weight: bold;
+}
+
+.receipt__action {
+	margin: 0;
+	right: 0;
+	top: 0;
+	position: absolute;
+}
+
+#receipt input.receipt-input {
+	display: inline-block;
+	width: 30%;
+}
+
+@media screen and (max-width: 780px) {
+	#receipt input.receipt-input {
+		width: 90%;
+	}
+	.receipt__action {
+		margin: 0;
+		right: 0;
+		top: auto;
+		bottom: 0;
+		position: absolute;
+	}
+	#receipt input.button {
+		width: auto;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	#receipt input.receipt-input {
+		width: 100%;
+	}
+}
