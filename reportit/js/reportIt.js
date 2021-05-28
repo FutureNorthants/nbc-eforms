@@ -662,6 +662,12 @@ return {
 }
 })();
 
+function noquote(){
+	var x = document.getElementById("problemDetails")
+	x.value=x.value.replace(/['"]+/g, '')
+console.log(x)
+}
+
 /*--------------------------------*/
 /* Validation --------------------*/
 /*--------------------------------*/
