@@ -491,7 +491,7 @@ window.nbcApp = {
 	//handles the ajax call to the server
 	submitCase: function() {
 		var testwindow = window.location.href;
-		if (testwindow.includes("test")){
+		if (testwindow.includes("test"|"localhost")){
 			var url = "https://mycouncil-test.northampton.digital/CreateCall"}
 			else {url = "https://mycouncil.northampton.digital/CreateCall"}
 		var self = this;
@@ -664,7 +664,7 @@ return {
 
 function noquote(){
 	var x = document.getElementById("problemDetails")
-	x.value=x.value.replace(/['"]+/g, '')
+	x.value=x.value.replace(/"/g, '')
 console.log(x)
 }
 
