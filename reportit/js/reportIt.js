@@ -491,7 +491,7 @@ window.nbcApp = {
 	//handles the ajax call to the server
 	submitCase: function() {
 		var testwindow = window.location.href;
-		if (testwindow.includes("test"|"localhost")){
+		if (testwindow.includes("test")|testwindow.includes("localhost")){
 			var url = "https://mycouncil-test.northampton.digital/CreateCall"}
 			else {url = "https://mycouncil.northampton.digital/CreateCall"}
 		var self = this;
