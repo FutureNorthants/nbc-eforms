@@ -492,8 +492,8 @@ window.nbcApp = {
 	submitCase: function() {
 		var testwindow = window.location.href;
 		if (testwindow.includes("test")|testwindow.includes("localhost")){
-			var url = "https://mycouncil-test.northampton.digital/CreateCall"}
-			else {url = "https://mycouncil.northampton.digital/CreateCall"}
+			var url = "https://api.northampton.digital/vcc-test/mycouncil"}
+			else {url = "https://api.northampton.digital/vcc/mycouncil"}
 		var self = this;
 		//show a 'sending' message while call is progressing and hide the main form
 		$(window).scrollTop($("content").scrollTop());
