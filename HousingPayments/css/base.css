@@ -343,7 +343,7 @@ ul#skip li:last-child	 { margin-right:0; }
 ul#skip li a { text-decoration:none; }
 	
 #mast {margin: 0 0 20px 0; padding: 10px 20px; border: 2px solid #FFFFFF; border-top: 0px;  -webkit-border-bottom-right-radius: 10px; -webkit-border-bottom-left-radius: 10px; -moz-border-radius-bottomright: 10px; -moz-border-radius-bottomleft: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
-#mast span.h1 {background: url(../images/west_white_logo.svg) transparent no-repeat; width: 300px; height:100px; margin: 15px 0; float: left; display: inline; background-size: 100%;}
+#mast span.h1 {background: url(../images/WNU-transparent.png) transparent no-repeat; width: 300px; height:100px; margin: 15px 0; float: left; display: inline; background-size: 100%;}
 #mast span.h1 a:link, #mast h1 a:visited {width: 300px; height: 62px; display: block;}
 #mast span.h1 span { margin-left: -200000px; position: absolute; top: -200000px;}
 #mast ul#mast-nav {display: inline; float: right; width: auto; margin:10px 0 20px 0; height: 20px;}

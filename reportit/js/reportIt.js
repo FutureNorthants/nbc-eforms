@@ -491,9 +491,9 @@ window.nbcApp = {
 	//handles the ajax call to the server
 	submitCase: function() {
 		var testwindow = window.location.href;
-		if (testwindow.includes("test")){
-			var url = "https://mycouncil-test.northampton.digital/CreateCall"}
-			else {url = "https://mycouncil.northampton.digital/CreateCall"}
+		if (testwindow.includes("test")|testwindow.includes("localhost")){
+			var url = "https://api.northampton.digital/vcc-test/mycouncil"}
+			else {url = "https://api.northampton.digital/vcc/mycouncil"}
 		var self = this;
 		//show a 'sending' message while call is progressing and hide the main form
 		$(window).scrollTop($("content").scrollTop());
@@ -661,6 +661,12 @@ return {
 	}
 }
 })();
+
+function noquote(){
+	var x = document.getElementById("problemDetails")
+	x.value=x.value.replace(/"/g, '')
+console.log(x)
+}
 
 /*--------------------------------*/
 /* Validation --------------------*/
