@@ -428,7 +428,7 @@ window.nbcApp = {
 		var usrn = nbcApp.Utils.getParameterByName("usrn");
 		this.model.usrn = (usrn) ? usrn : "";
 		
-		var userId = nbcApp.Utils.getParameterByName("userId");
+		var userId = nbcApp.Utils.getParameterByName("userid");
 		this.model.userid = (userId) ? userId : "";
 	},
 	
@@ -467,9 +467,11 @@ window.nbcApp = {
 		var usrn = nbcApp.Utils.getParameterByName("usrn");
 		this.model.usrn = (usrn) ? usrn : "";
 		
-		var userId = nbcApp.Utils.getParameterByName("userId");
-		this.model.userid = (userId) ? userId : "";
-		
+		// set the userid
+		var userId = nbcApp.Utils.getParameterByName("userid");
+		if(userId.length > 0) {
+			$("#userid").val(userId);
+		}
 		
 	},
 	
