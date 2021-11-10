@@ -1,0 +1,61 @@
+<html>
+<body>
+  <head>
+    <style>
+      .button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+      </style>
+  </head>
+<div id='logo' style='width: 100%; background: #FFF;'>
+  <center>
+    <A HREF='https://www.northampton.gov.uk'>
+      <img style='border: none;' src='https://s3.eu-west-2.amazonaws.com/norberta.northampton.digital/WNClogo.png' alt='West Northamptonshire Council Logo'/>
+    </A>
+  </center>
+  
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+<div style='font-family:Roboto, Lucida Sans Unicode, lucida sans, Verdana, Helvetica, Arial, sans-serif;background: #58686D;Color: White;font-size: 25px;text-align: center'> <label id="title"></label></div>
+</div>
+<div style='font-family:Roboto, Lucida Sans Unicode, lucida sans, Verdana, Helvetica, Arial, sans-serif;font-size: 14px;margin: 5px;text-align: left'>
+<br>
+<h1>
+  <center>
+  <form action="https://redirectcontact.westnorthants.digital">   
+    <input type="hidden" id="instance" name="instance" value=""><br>
+    <input type="submit" class="button" value="Click to confirm redirection">
+    <input type="hidden" id="reference" name="reference" value=""><br>
+    <input type="hidden" id="transfer" name="transfercaseto" value=""><br>  
+  </form>
+</center>
+</h1>
+<h2>
+Kind Regards,
+<br>
+<br>
+<B><label id="signature"></label></B>
+</h2>
+<script>
+  document.getElementById("title").innerHTML = "Case number is " + get('reference');
+  document.getElementById("signature").innerHTML = get('persona') + " - your Virtual Assistant";
+  document.getElementById("instance").value = get('instance');
+  document.getElementById("reference").value = get('reference');
+  document.getElementById("transfer").value = get('transfercaseto');
+
+  function get(name){
+   if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+      return decodeURIComponent(name[1]);
+}
+</script>
+</body>
+</html>
