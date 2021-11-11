@@ -33,7 +33,7 @@
   <center>
   <form action="https://redirectcontact.westnorthants.digital">   
     <input type="hidden" id="instance" name="instance" value=""><br>
-    <input type="submit" class="button" value="Click to confirm redirection">
+    <input type="submit" class="button" id="button" value="Click to confirm redirection">
     <input type="hidden" id="reference" name="reference" value=""><br>
     <input type="hidden" id="transfer" name="transfercaseto" value=""><br>  
   </form>
@@ -51,6 +51,40 @@ Kind Regards,
   document.getElementById("instance").value = get('instance');
   document.getElementById("reference").value = get('reference');
   document.getElementById("transfer").value = get('transfercaseto');
+
+  switch (get('transfercaseto')) {
+  case "northampton":
+    document.getElementById("button").value += " to Guildhall Hub";
+    break;
+  case "daventry":
+    document.getElementById("button").value += " to Lodge Road Hub";
+    break;
+  case "south_northants":
+    document.getElementById("button").value += " to The Forum Hub";
+    break;
+  case "northamptonshire":
+    if(get('reference').includes("EMA"))
+    {
+      document.getElementById("button").value += " to One Angel Square Hub";
+    }
+    else
+    {
+      document.getElementById("button").value += " to County";
+    }
+    break;
+  case "wellingborough":
+    document.getElementById("button").value += " to Wellingborough";
+    break;
+  case "corby":
+    document.getElementById("button").value += " to Corby";
+    break;
+  case  "kettering":
+    document.getElementById("button").value += " to Kettering";
+    break;
+   case  "easat_northants":
+    document.getElementById("button").value += " to East Northants";
+    break;
+}
 
   function get(name){
    if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
