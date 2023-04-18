@@ -21,7 +21,7 @@ window.nbcApp = {
 		problemDetails: "",
 		internal: "",
 		interactionId: "",
-		userid: "",
+		userId: "",
 		witness: "",
 		perpName: "",
 		perpAddress: "",
@@ -44,8 +44,13 @@ window.nbcApp = {
 		trolleyw: "",
 		postref: "",
 		binref: "",
-		usrn: ""
+		avoidable:"",
+		custContact:"",
+		usrn: "",
+		personId:"",
+		threeWordsUsed:"",
 	},
+	
 	
 	
 	addEventListeners: function() {
@@ -60,6 +65,9 @@ window.nbcApp = {
 			}
 		});
 		
+		$(".js-3-words").click(function(e){
+		e.preventDefault();});
+		
 		/**
 		 * search for a street
 		 * return the results to html fields
@@ -68,13 +76,14 @@ window.nbcApp = {
 		$(".js-search-street").click(function(e){
 			e.preventDefault();
 			self.hideErrors();
-			
+			 var radioButtons = document.querySelector('input[name="searchType"]:checked').value;
 			var streetSearchStr = $("#search-street").val();
 			if(nbcApp.Validation.isEmpty(streetSearchStr)){
 				$(".js-street-empty").show();
-			} else {
+			} else if (radioButtons ==="Street") {
 				self.searchForStreets(streetSearchStr);
-			}
+			} else {var words = $("#search-street").val
+				self.whatthreewords()}
 		});
 		
 		$("#mainForm").delegate("#objectId","change",function(e){
@@ -84,6 +93,10 @@ window.nbcApp = {
 			$("#problemStreet").val(street);
 			
 			self.searchGoogleForStreet(street);
+		});
+		$("#mainForm").delegate(".js-3-words","click",function(e){
+			var words = $("#search-street").val
+			self.whatthreewords();
 		});
 		
 		$("#mainForm").delegate("#problemNumber","change",function(e){
@@ -152,6 +165,7 @@ window.nbcApp = {
 		
 	},
 	
+    
 	
 	
 	searchForStreets: function(searchStr) {
@@ -175,7 +189,7 @@ window.nbcApp = {
 				if(data.results.length > 0 ){
 					var streetN = data.results[0][1];
 					$(".js-street-search-ajax").hide();
-					self.showPropertyList(data.results);
+					self.showPropertyList(data.results); 
 				} else {
 					
 					$(".js-street-noresults").show();
@@ -197,19 +211,62 @@ window.nbcApp = {
 		 * 
 		 * show the list
 		 */
-		var html = '<option value="">Select</option>';
-		var i;
-		var len = results.length;
-		for(i = 0; i < len; i++) {
-			
-			var address = "";
-				address += results[i][1];
-				
-			html += '<option value="'+results[i][0]+'">'+address+'</option>';
-		}
 		
-		$("#objectId").html(html);
-		$("#address-results").show();
+		var numStreets= document.getElementById("numofStreets")
+		var i;
+		var nbcProps =[]
+		var nbcProps2=[]
+		var len = results.length;
+		
+		var address = "";
+		address += results[0][1];
+		var html = '';		
+		var wordsused = document.getElementById("threeWordsUsed").value;
+		var selected = "false"
+
+		
+			if (len === 1 ){html += '<option value="'+results[0][0] +'">'+address+'</option>'; console.log(address)}
+		 
+			if (wordsused !=""){ console.log(len)
+				html += '<option value="'+results[0][0] +'">'+results[0][1]+'</option>';
+				
+				 $("#objectId").html(html).change();
+				$("#address-results").show();
+				}else {
+				
+			for(i=0; i< len; i++){
+			var town = results[i][4]
+			if (town ==="NORTHAMPTON"){
+				console.log(town);
+					nbcProps.push(results[i])
+					nbcProps2.push({USRN:results[i][0],Street:results[i][1]})
+			console.log(nbcProps)
+			console.log(nbcProps2)}
+			numofStreets.innerHTML=nbcProps.length
+		
+			}
+			if (nbcProps.length > 0	){
+				for(i=0; i<nbcProps.length; i++){
+				var address = "";
+				address += nbcProps[i][1];
+				var usrn ="";	
+				usrn += nbcProps[i][0]
+					html += '<option value="'+usrn+'"' + selected + '>'+address+'</option>';
+					numofStreets.innerHTML=nbcProps.length
+					console.log(nbcProps.length)
+				}
+				
+				/////
+		
+				$("#objectId").html(html).change();
+				$("#address-results").show();
+			}
+			else if (nbcProps.length<1){
+			console.log("Luke there is an issue")
+			$(".js-street-noresults").show();}
+			
+				}
+	
 	},
 	
 	createMap: function() {
@@ -293,10 +350,89 @@ window.nbcApp = {
 		});
 	},
 	
+	whatthreewords: function () {
+		var self = this;
+		var words = document.getElementById("search-street").value
+		var wordsused = document.getElementById("threeWordsUsed")
+		var threeWLatLong = document.getElementById("threeLatLong")
+		console.log(words)
+		 
+$.ajax({
+			url:"https://api.what3words.com/v3/convert-to-coordinates?key=QX2VTHGW",
+			type:"GET",
+			dataType:"JSON",
+			data:{words: words },
+			success: function(data)
+			{
+			var threelat =data.coordinates.lat
+			console.log(threelat)
+			var threelng = data.coordinates.lng
+			wordsused.value = words
+			
+			
+			threeLatLong =  new google.maps.LatLng(threelat, threelng);
+			threeWLatLong.value = threeLatLong
+				console.log(threeLatLong)
+			self.geocoder.geocode({'latLng':threeLatLong}, function (results, status) {
+				if (status == google.maps.GeocoderStatus.OK) {
+					if (results[0]){
+						console.log(results)
+						var threestreet = results[0].address_components[1].long_name
+						var threearea = results[0].address_components[2].long_name
+						searchStr = threestreet+","+threearea
+						console.log(searchStr)
+						// populate form field with google's result
+						self.setCurrentLocation(threeLatLong,results[0].formatted_address);
+							$.ajax({
+			url:"https://api.northampton.digital/vcc/getstreetbylatlng",
+			type:"GET",
+			dataType:"JSON",
+			data:{
+				lat: threelat,
+				lng: threelng
+				
+			},
+			
+			success: function(data){
+				
+				if(data.results.length > 0 ){
+					var streetN = data.results[0][1];
+					$(".js-street-search-ajax").hide();
+					self.showPropertyList(data.results); 
+				} else {
+					
+					$(".js-street-noresults").show();
+					$(".js-street-search-ajax").hide();
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown){
+				console.log(textStatus);
+				// show error for no results
+				$(".js-street-noresults").show();
+				$(".js-street-search-ajax").hide();
+			}
+		});
+					}
+				}
+			})
+				
+			if (threeLatLong !=null){
+					self.setCurrentLocation(threeLatLong);
+					self.updateMarker(threeLatLong);
+					self.mapBounds.contains(threeLatLong) ? lastPosition = threeLatLong:[threeLatLong=(new google.maps.LatLng(52.23740,-0.89463)),self.mapMarker.setPosition(new google.maps.LatLng(52.23740,-0.89463)),self.map.panTo(threeLatLong),window.alert("You have selected a location that is not in the Borough Council boundaries. Please retry.")];
+				}
+			
+				
+			},
+			error: function(jqXHR, textStatus, errorThrown){}
+		});
+	 
+	},
 	
 	
 	searchGoogleForStreet: function(searchStr) {
 		var self = this;
+		var threeWUsed = document.getElementById("threeWordsUsed").value
 		if(searchStr.toLowerCase()=='ringway, northampton'){
 			searchStr='Ring Way, Northampton';
 		}
@@ -304,7 +440,7 @@ window.nbcApp = {
 			url:"https://api.northampton.digital/vcc/getstreetbyname",
 			type:"GET",
 			dataType:"JSON",
-			data:{streetName: searchStr},
+			data:{streetName: searchStr + " Northampton"},
 			success: function(data)
 			{
 				
@@ -317,24 +453,25 @@ window.nbcApp = {
 					for (var i = 0; i <index; i++) {
 						
 						//Do something
-					if (myJSON[i][1] === searchStr){
+					if (myJSON[i][1] === searchStr &&(myJSON[i][4]==="NORTHAMPTON"))  {
 						var j = i
-						
+						{break}
 
 					}	else {console.log("does not match")}
 					}
 				 ourLat = data.results[j][2];
 				 ourLong = data.results[j][3];
 				 ourLatLong =  new google.maps.LatLng(ourLat, ourLong);
+				 
 				
 				
-				searchStr = searchStr + "Northampton, UK";
+				searchStr = searchStr;
 				address = searchStr;
 				;}
-				if (ourLatLong !=null){
+				if (threeWUsed =="") {
 					self.setCurrentLocation(ourLatLong,address);
 					self.updateMarker(ourLatLong);
-				}
+				} 
 				/*self.geocoder.geocode( { 'location': ourLatLong, 'bounds':self.mapBounds}, function(results, status) {
 					if (status == google.maps.GeocoderStatus.OK && results[0]) {
 						// move map marker, populate lat/lng
@@ -428,8 +565,8 @@ window.nbcApp = {
 		var usrn = nbcApp.Utils.getParameterByName("usrn");
 		this.model.usrn = (usrn) ? usrn : "";
 		
-		var userId = nbcApp.Utils.getParameterByName("userId");
-		this.model.userid = (userId) ? userId : "";
+		//var userId = nbcApp.Utils.getParameterByName("userId");
+		//this.model.userid = (userId) ? userId : "";
 	},
 	
 	populateFieldsFromUrl: function() {
@@ -467,9 +604,19 @@ window.nbcApp = {
 		var usrn = nbcApp.Utils.getParameterByName("usrn");
 		this.model.usrn = (usrn) ? usrn : "";
 		
-		var userId = nbcApp.Utils.getParameterByName("userId");
-		this.model.userid = (userId) ? userId : "";
+				   
+		//var userId = nbcApp.Utils.getParameterByName("userid");
+		//this.model.userid = (userId) ? userId : "";
 		
+	var userid = nbcApp.Utils.getParameterByName("userid");
+		if(userid.length > 0) {
+			$("#userId").val(userid);
+		}
+		
+	var personid = nbcApp.Utils.getParameterByName("personid");
+		if(userid.length > 0) {
+			$("#personId").val(personid);
+		}
 		
 	},
 	
@@ -492,7 +639,7 @@ window.nbcApp = {
 	submitCase: function() {
 		var testwindow = window.location.href;
 		if (testwindow.includes("test")|testwindow.includes("localhost")){
-			var url = "https://api.northampton.digital/vcc-test/mycouncil"}
+			var url = "https://sonofmycouncil-test.northampton.digital/CreateCall"}
 			else {url = "https://api.northampton.digital/vcc/mycouncil"}
 		var self = this;
 		//show a 'sending' message while call is progressing and hide the main form
@@ -549,6 +696,8 @@ window.nbcApp = {
 		$(".js-case-sla").html(output);
 		$(".js-ajax-wait").hide();
 		$(".js-confirmation").show();
+		$(".js-case-sla").html(output);
+		$("js-case-ref").show();
 		$(window).scrollTop($("#mainForm").scrollTop());
 	},
 
@@ -665,8 +814,10 @@ return {
 function noquote(){
 	var x = document.getElementById("problemDetails")
 	x.value=x.value.replace(/"/g, '')
-console.log(x)
+
 }
+
+
 
 /*--------------------------------*/
 /* Validation --------------------*/
@@ -806,7 +957,14 @@ $("#postref").keyup( function() {
 	
 });
 
-
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString)
+const idset = urlParams.has('userid');
+const internal = document.getElementById("internal")
+if (idset == true){internal.style.visibility="visible"}else{internal.style.visibility="hidden"}
+//const avoidable = document.getElementById('js-avoidable')
+//const contact = document.getElementById('js-contact')
+//if(idset == true){avoidable.style.visibility="visible"; contact.style.visibility="visible" }else{avoidable.style.visibility="hidden" ; contact.style.visibility ="hidden"}
 
 
 nbcApp.init();

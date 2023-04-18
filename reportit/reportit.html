@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css" href="css/base.css">
 <link rel="stylesheet" type="text/css" href="css/reportIt.css">
 <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyDGH-C0Ba_9QGp_YF32gs0FQmhB2tdcrpQ"></script>
+<script src="https://assets.what3words.com/sdk/v3/what3words.js?key=QX2VTHGW"></script>
 <link rel="Shortcut Icon" type="image/x-icon" href="images/favicon.ico">
 <link rel="apple-touch-icon" href="/site/apple-touch-icon.png">
 <link rel="ToC" href="http://www.northampton.gov.uk/site_map">
@@ -183,19 +184,26 @@
 						</fieldset>
 						<div class="js-step-2">
 						<fieldset>
-							<label for="Address">Street Search*</label> <input type="text"
+							
+							<label for "searchType">Would you like to search via street name or what 3 words?</label>
+								<input type="radio" name="searchType" value="Street" checked>Street Name<br>
+								<input type="radio" name="searchType" value="ThreeWords">What 3 words<br>
+						</fieldset>
+						<fieldset>
+							<label for="Address">Street / What 3 Words Search*</label> <input type="text"
 								id="search-street" class="form-text mandatory" required>
-							<p class="form-help">Search for a street name</p>
+							<p class="form-help">Search using a street name or <a href = "https://what3words.com/" target="_blank" rel="noopener noreferrer" >What Three Words</a></p>
 							<p class="form-help error js-street-empty">Please enter a street name</p>
 							<p class="form-help error js-street-noresults">There are no streets matching that name, please enter another</p>
 							<button class="button progress search js-search-street" id="searchButton">Search</button>
+							<!--<button class="button progress search js-3-words" id="searchButton">Search by \\\What 3 Words</button>-->
 							<div class="js-street-search-ajax"
 								style="text-align: center; display: none">
 								<img src="images/loading.gif" title="Loading..." alt="Loading">
 							</div>
 						</fieldset>
 						<fieldset id="address-results">
-							<label>Select a street*</label> 
+							<label>Confirm nearest street* There are <span id ="numofStreets"></span> street(s) nearby or that match your description</label> 
 							<select id="objectId">
 								<option>Select</option>
 							</select>
@@ -393,11 +401,49 @@
 								<input type="text" id="perpVehicleMarks" class="form-text"/>
 							</fieldset>
 						</div>
+						<div id ="internal">
+						<fieldset class="js-contact" id = "js-contact">
+							<label for="custContact">Contact Channel</label>
+							<select id="custContact">
+								<option value="web">Web</option>
+							</select>
+						</fieldset>
+						<!--<fieldset class="js-avoidable" id = "js-avoidable">
+							<label for="avoidable">Was this contact avoidable?</label>
+							<select id="avoidable">
+								<option>Select</option>
+								<option value="Unavoidable">Unavoidable</option>
+								<option value="Could have used digital contact method">Could have used digital contact method</option>
+								<option value="Poor signposting or transfer">Poor signposting or transfer</option>
+								<option value = "Progress Chasing inbound">Progress Chasing (inbound) </option>
+								<option value = "Progress chasing outbound">Progress chasing (outbound, because a customer hasn't done something)</option>
+								<option value = "Repeat contact">Repeat contact</option>
+								<option value = "Service failure">Service failure</option>
+								<option value = "Unnecessary clarification ">Unnecessary clarification </option>
+							</select>
+						</fieldset>-->
+						<fieldset class = "hidden">
+						<label for="userId">User ID</label>
+						<input type="text" id="userId" class="form-text" />  <!--holds the user id--> 
+						</fieldset>
+						<fieldset class = "hidden">
+						<label for="userId">person ID</label>
+						<input type="text" id="personId" class="form-text" />  <!--holds the user id--> 
+						</fieldset>
+						<fieldset class = "hid">
+						<label for="threeWordsUsed">three words used</label>
+						<input type="text" id="threeWordsUsed" class="form-text" />  <!--holds the what 3 words used--> 
+						</fieldset><fieldset class = "hid">
+						<label for="threeLatLong>three words used</label>
+						<input type="text" id="threeLatLong" class="form-text" />  <!--holds the what 3 words lat long used--> 
+						</fieldset>
+						</div>
 						<fieldset class="form-actions">
 							<input type="submit" id="Submit" value="Report the problem"
 								class="red">
 						</fieldset>
-						</div><!-- /js-step-4 -->
+						</div>
+						<!-- /js-step-4 -->
 					</form>
 				</div>
 				<div id="ajax-wait" align="center" class="js-ajax-wait"
@@ -415,6 +461,7 @@
 					<span class="caseRef js-case-ref"></span>
 					<div class="js-case-sla"></div>
 					<p class="js-confirmation-message"></p>
+					<strong><a href = "https://eforms.northampton.digital/reportit/reportit.html" target = "_self">Report a new issue</a></strong>
 					</div>
 					<!-- <form id="receipt" method="POST" action="#">
 
