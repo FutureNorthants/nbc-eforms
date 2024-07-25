@@ -93,6 +93,14 @@ fieldset .button.search {
 	margin-bottom:.8em;
 }
 
+.caseDateText {
+	font-family;cursive;
+	font-size: 15px;
+	color: #000000;
+	display:block;
+	margin-bottom:.8em;
+}
+
 /*span {
 	color: #A52449;
 }*/
